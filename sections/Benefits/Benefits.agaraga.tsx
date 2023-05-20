@@ -1,17 +1,17 @@
 import Icon from "$store/components/ui/Icon.tsx";
 
 export interface Props {
-  title: string;
-  description: string;
-  benefits: Array<BenefitProps>;
+  title?: string;
+  description?: string;
+  benefits?: Array<BenefitProps>;
 }
 
 export interface BenefitProps {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
 }
 
-function Benefit({ title, description }: BenefitProps) {
+function Benefit({ title = "", description = "" }: BenefitProps) {
   return (
     <div className="bg-blue-400 flex flex-col items-center p-6 mx-4 my-3 lg:w-72">
       <svg
@@ -27,12 +27,14 @@ function Benefit({ title, description }: BenefitProps) {
         />
       </svg>
       <h3 className="mt-3 text-base-100 text-xl">{title}</h3>
-      <p className="mt-2 hidden sm:block text-base-100 text-sm">{description}</p>
+      <p className="mt-2 hidden sm:block text-base-100 text-sm">
+        {description}
+      </p>
     </div>
   );
 }
 
-function Benefits({ title, description, benefits }: Props) {
+function Benefits({ title = "", description = "", benefits = [] }: Props) {
   return (
     <section className="py-10 px-12 bg-base-100">
       <h2 className="text-base-content text-center text-4xl mb-2">{title}</h2>
